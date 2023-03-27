@@ -4,13 +4,13 @@ const router = require('express').Router()
 
 
 
-router.use('*', (req, res, next) => {
-    res.json({ api: 'up'})
+router.use('*', (req, res) => {
+    res.json({ api: 'up inside resource router'})
 }) //catch all for the errors
 
 router.use((err, req, res, next) => { // eslint-disable-line
     res.status(500).json({
-        customMessage: 'something went wrong inside the recipes router',
+        customMessage: 'something went wrong inside the resource router',
         message: err.message, //<< you would not want this is a prod app
         stack: err.stack,
     })
