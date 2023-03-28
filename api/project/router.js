@@ -4,6 +4,8 @@ const router = require('express').Router()
 
 
 
+
+
 router.use('*', (req, res) => {
     res.json({ api: 'up inside project router'})
 }) //catch all for the errors
