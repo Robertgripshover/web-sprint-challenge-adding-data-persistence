@@ -8,9 +8,13 @@ const getAllProjects = () => {
 } //this is working!
 
 
+// const getProjectById = id => {
+//     return db('projects').where('project_id', id).first()
+// }
+
 
 const createNewProject = project => {
-     return db('projects').insert(project)
+     return db('projects').insert(project)     
 }
 
 module.exports = {

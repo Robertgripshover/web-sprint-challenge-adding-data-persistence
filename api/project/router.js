@@ -5,8 +5,6 @@ const router = require('express').Router()
 const ProjectModel = require('./model')
 
 
-
-
 router.get('/', async (req, res, next) => {
     try{
         const projects = await ProjectModel.getAllProjects()
@@ -19,15 +17,12 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try {
-        const newProject = await ProjectModel.create(req.body)
+        const newProject = await ProjectModel.createNewProject(req.body)
         res.status(201).json(newProject)
     } catch (err) {
         next({ message: 'projects post did not work' })
     }
 })
-
-
-
 
 
 router.use('*', (req, res) => {
