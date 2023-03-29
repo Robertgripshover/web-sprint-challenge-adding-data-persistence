@@ -5,6 +5,39 @@ const router = require('express').Router()
 
 
 
+
+
+
+
+
+const TaskModel = require('./model') //pulling in all the models
+
+
+
+
+router.get('/', async (req, res, next) => {
+    try{
+        const task = await TaskModel.getAllTasks()
+        res.json(task)
+    } catch (err) {
+        next({ status: 404, message: 'there are no results for the task'})
+    }
+}) //this is working!
+
+
+router.post('/', async (req, res, next) => {
+    try {
+        const newTask = await TaskModel.createNewTask(req.body)
+        res.status(201).json(newTask)
+    } catch (err) {
+        next({ message: 'task post did not work' })
+    }
+})
+
+
+
+
+
 router.use('*', (req, res) => {
     res.json({ api: 'up inside task router'})
 }) //catch all for the errors
