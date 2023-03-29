@@ -2,28 +2,16 @@
 
 const router = require('express').Router()
 
-
-
-
-
-
-
-
-
-const TaskModel = require('./model') //pulling in all the models
-
-
-
+const TaskModel = require('./model')
 
 router.get('/', async (req, res, next) => {
     try{
         const task = await TaskModel.getAllTasks()
         res.json(task)
     } catch (err) {
-        next({ status: 404, message: 'there are no results for the task'})
+        next({ status: 404, message: 'there are no results for the task' })
     }
-}) //this is working!
-
+})
 
 router.post('/', async (req, res, next) => {
     try {
@@ -35,20 +23,18 @@ router.post('/', async (req, res, next) => {
 })
 
 
-
-
-
 router.use('*', (req, res) => {
-    res.json({ api: 'up inside task router'})
+    res.json({ api: 'up inside task router' })
 }) //catch all for the errors
 
 router.use((err, req, res, next) => { // eslint-disable-line
     res.status(500).json({
         customMessage: 'something went wrong inside the tasks router',
-        message: err.message, //<< you would not want this is a prod app
+        message: err.message,
         stack: err.stack,
     })
 }) //error handling middleware
+
 
 module.exports = router
 

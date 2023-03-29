@@ -5,7 +5,7 @@ const db = require('../../data/dbConfig')
 
 const getAllResources = () => {
     return db('resoures')
-} //this is working!
+} 
 
 
 const createNewResource = project => {

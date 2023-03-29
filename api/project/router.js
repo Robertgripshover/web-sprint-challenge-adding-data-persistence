@@ -10,10 +10,9 @@ router.get('/', async (req, res, next) => {
         const projects = await ProjectModel.getAllProjects()
         res.json(projects)
     } catch (err) {
-        next({ status: 404, message: 'there are no results'})
+        next({ status: 404, message: 'there are no results' })
     }
-}) //this is working!
-
+}) 
 
 router.post('/', async (req, res, next) => {
     try {
@@ -26,7 +25,7 @@ router.post('/', async (req, res, next) => {
 
 
 router.use('*', (req, res) => {
-    res.json({ api: 'up inside project router'})
+    res.json({ api: 'up inside project router' })
 }) //catch all for the errors
 
 router.use((err, req, res, next) => { // eslint-disable-line

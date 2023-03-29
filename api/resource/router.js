@@ -2,10 +2,7 @@
 
 const router = require('express').Router()
 
-
 const ResourceModel = require('./model') //pulling in all the models
-
-
 
 
 router.get('/', async (req, res, next) => {
@@ -13,9 +10,9 @@ router.get('/', async (req, res, next) => {
         const resource = await ResourceModel.getAllResources()
         res.json(resource)
     } catch (err) {
-        next({ status: 404, message: 'there are no results for the resource'})
+        next({ status: 404, message: 'there are no results for the resource' })
     }
-}) //this is working!
+})
 
 
 router.post('/', async (req, res, next) => {
@@ -28,17 +25,14 @@ router.post('/', async (req, res, next) => {
 })
 
 
-
-
-
 router.use('*', (req, res) => {
-    res.json({ api: 'up inside resource router'})
+    res.json({ api: 'up inside resource router' })
 }) //catch all for the errors
 
 router.use((err, req, res, next) => { // eslint-disable-line
     res.status(500).json({
         customMessage: 'something went wrong inside the resource router',
-        message: err.message, //<< you would not want this is a prod app
+        message: err.message, 
         stack: err.stack,
     })
 }) //error handling middleware
