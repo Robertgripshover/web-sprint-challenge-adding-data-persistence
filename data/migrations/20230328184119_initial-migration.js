@@ -30,6 +30,23 @@ exports.up = async function(knex) {
         .onUpdate('RESTRICT')
         //^^ I am pretty sure all of this is the FK pointing to the project_id
     })
+    .createTable('project_resources', table => {
+        table.increments('project_resource_id').primary()
+        table.integer('task_id').notNullable()
+        .unsigned()
+        .notNullable()
+        .references('task_id')
+        .inTable('tasks')
+        .onDelete('RESTRICT')
+        .onUpdate('RESTRICT')
+        table.integer('resource_id').notNullable()
+        .unsigned()
+        .notNullable()
+        .references('resource_id')
+        .inTable('resources')
+        .onDelete('RESTRICT')
+        .onUpdate('RESTRICT')
+    })
 
 };
 
