@@ -5,21 +5,21 @@
 exports.up = async function(knex) {
   await knex.schema
     .createTable('projects', table => {
-        table.increments('project_id') //<< don't know if I should add this .primary() ???
+        table.increments('project_id') 
         table.string('project_name', 200).notNullable()
         table.string('project_description', 300)
-        table.boolean('project_completed') //<< this could be wrong check this ???
+        table.boolean('project_completed') 
     })
     .createTable('resoures', table => {
-        table.increments('resource_id') //<< don't know if I should add this .primary() ???
+        table.increments('resource_id') 
         table.string('resource_name').notNullable().unique()
         table.string('resource_description')
     })
     .createTable('tasks', table => {
-        table.increments('task_id') //<< don't know if I should add this .primary() ???
+        table.increments('task_id') 
         table.string('task_description').notNullable()
         table.string('task_notes')
-        table.boolean('task_completed') //<< this could be wrong check this ???
+        table.boolean('task_completed') 
         //FK vv
         table.integer('project_id').notNullable()
         .unsigned()

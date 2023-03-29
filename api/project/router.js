@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
     } catch (err) {
         next({ status: 404, message: 'there are no results'})
     }
-})
+}) //this is working!
 
 
 router.post('/', async (req, res, next) => {
