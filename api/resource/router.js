@@ -3,7 +3,30 @@
 const router = require('express').Router()
 
 
-const Resource = require('./model') //pulling in all the models
+const ResourceModel = require('./model') //pulling in all the models
+
+
+
+
+router.get('/', async (req, res, next) => {
+    try{
+        const resource = await ResourceModel.getAllResources()
+        res.json(resource)
+    } catch (err) {
+        next({ status: 404, message: 'there are no results for the resource'})
+    }
+}) //this is working!
+
+
+router.post('/', async (req, res, next) => {
+    try {
+        const newResource = await ResourceModel.createNewResource(req.body)
+        res.status(201).json(newResource)
+    } catch (err) {
+        next({ message: 'resources post did not work' })
+    }
+})
+
 
 
 

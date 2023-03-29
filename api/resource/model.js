@@ -1,7 +1,16 @@
 // build your `Resource` model here
 
-function getResourceById(resource_id) {
-    return Promise.resolve(`that is an awesome resource with id ${resource_id}`)
+const db = require('../../data/dbConfig')
+
+
+const getAllResources = () => {
+    return db('resouces')
+} //this is working!
+
+
+const createNewResource = project => {
+     return db('resouces').insert(project)     
 }
 
-module.exports = { getResourceById }
+
+module.exports = { getAllResources, createNewResource }
