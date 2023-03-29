@@ -6,14 +6,6 @@ const router = require('express').Router()
 const Resource = require('./model') //pulling in all the models
 
 
-router.get('/:resource_id', (req, res, next) => {
-    Resource.get(req.params.resource_id)
-        .then(resource => {
-            res.status(200).json(resource)     
-        })
-        .catch(next)
-})
-
 
 
 router.use('*', (req, res) => {
