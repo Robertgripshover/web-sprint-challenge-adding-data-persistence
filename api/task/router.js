@@ -4,6 +4,7 @@ const router = require('express').Router()
 
 const TaskModel = require('./model')
 
+
 router.get('/', async (req, res, next) => {
     try{
         const task = await TaskModel.getAllTasks()

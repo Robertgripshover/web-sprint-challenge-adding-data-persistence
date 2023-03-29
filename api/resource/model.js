@@ -4,12 +4,12 @@ const db = require('../../data/dbConfig')
 
 
 const getAllResources = () => {
-    return db('resoures')
+    return db('resources')
 } 
 
 
 const createNewResource = project => {
-     return db('resoures').insert(project)     
+     return db('resources').insert(project)     
 }
 
 
