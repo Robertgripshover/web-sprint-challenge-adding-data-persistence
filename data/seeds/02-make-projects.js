@@ -19,7 +19,12 @@ const resources = [
 
 
 const project_resources = [
-    
+    {task_id: 1, resource_id: 1}, //the hammer
+    {task_id: 2, resource_id: 2}, //the lumber
+    {task_id: 3, resource_id: 3}, //the socket set
+    {task_id: 4, resource_id: 4}, //the motor oil
+    {task_id: 5, resource_id: 5}, //the lawn mower gas
+    {task_id: 6, resource_id: 6}, //weed wacker twine
 ]
 
 const tasks = [
