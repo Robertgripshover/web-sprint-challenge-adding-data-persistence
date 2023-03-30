@@ -7,10 +7,14 @@ const getAllResources = () => {
     return db('resources')
 } 
 
+const getResourceById = id => {
+    return db('resources').where('resource_id', id).first()
+}
 
-const createNewResource = project => {
-     return db('resources').insert(project)     
+const createNewResource = async resource => {
+    const [id] = await db('resources').insert(resource)
+     return getResourceById(id)     
 }
 
 
-module.exports = { getAllResources, createNewResource }
+module.exports = { getAllResources, getResourceById, createNewResource }
