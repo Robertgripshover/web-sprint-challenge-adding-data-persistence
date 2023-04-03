@@ -23,6 +23,7 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         const newTask = await TaskModel.createNewTask(req.body)
+        newTask.task_completed = Boolean(newTask.task_completed)
         res.status(201).json(newTask)
     } catch (err) {
         next({ message: 'task post did not work' })

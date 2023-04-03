@@ -19,8 +19,8 @@ function getAllTasks() {
         't.task_description',
         't.task_notes',
         't.task_completed',
-        'p.project_description',
-        'p.project_name'
+        'p.project_name',
+        'p.project_description'
     )
 
 } 

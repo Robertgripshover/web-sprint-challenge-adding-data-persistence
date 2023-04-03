@@ -23,6 +23,7 @@ router.post('/', async (req, res, next) => {
     try {
 
         const newProject = await ProjectModel.createNewProject(req.body)
+        newProject.project_completed = Boolean(newProject.task_completed)
 
         res.status(201).json(newProject)
 
