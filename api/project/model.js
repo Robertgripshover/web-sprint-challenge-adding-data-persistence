@@ -3,9 +3,35 @@
 const db = require('../../data/dbConfig')
 
 
-const getAllProjects = () => {
-    return db('projects')
-} 
+
+
+
+
+
+
+
+
+
+
+
+
+async function getAllProjects() {
+
+    const projectRows = await db('projects as p')
+
+    return projectRows
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 const getProjectById = id => {
