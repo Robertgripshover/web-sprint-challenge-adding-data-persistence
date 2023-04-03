@@ -7,8 +7,14 @@ const TaskModel = require('./model')
 
 router.get('/', async (req, res, next) => {
     try{
-        const task = await TaskModel.getAllTasks()
-        res.json(task)
+        const tasks = await TaskModel.getAllTasks()
+
+        tasks.forEach(task => {
+            task.task_completed = Boolean(task.task_completed)
+        })
+
+        res.json(tasks)
+        
     } catch (err) {
         next({ status: 404, message: 'there are no results for the task' })
     }
