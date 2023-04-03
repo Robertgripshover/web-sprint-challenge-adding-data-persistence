@@ -14,7 +14,14 @@ function getAllTasks() {
 
     return db('tasks as t')
     .leftJoin('projects as p', 't.task_id', 'p.project_id')
-    .select('t.*', 'p.project_description', 'p.project_name')
+    .select(
+        't.task_id',
+        't.task_description',
+        't.task_notes',
+        't.task_completed',
+        'p.project_description',
+        'p.project_name'
+    )
 
 } 
 
