@@ -8,7 +8,12 @@ const ProjectModel = require('./model')
 router.get('/', async (req, res, next) => {
     try{
         const projects = await ProjectModel.getAllProjects()
+
+        projects.forEach(project => {
+            project.project_completed = Boolean(project.project_completed)
+        })
         res.json(projects)
+        
     } catch (err) {
         next({ status: 404, message: 'there are no results' })
     }
