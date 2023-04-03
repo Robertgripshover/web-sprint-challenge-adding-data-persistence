@@ -4,17 +4,6 @@ const db = require('../../data/dbConfig')
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 async function getAllProjects() {
 
     const projectRows = await db('projects as p')
@@ -23,19 +12,10 @@ async function getAllProjects() {
 }
 
 
+async function getProjectById(id) {
 
-
-
-
-
-
-
-
-
-
-
-const getProjectById = id => {
-    return db('projects').where('project_id', id).first()
+    const currentProject = db('projects').where('project_id', id).first()
+    return currentProject
 }
 
 

@@ -21,9 +21,11 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try {
+
         const newProject = await ProjectModel.createNewProject(req.body)
 
         res.status(201).json(newProject)
+
     } catch (err) {
         next({ message: 'projects post did not work' })
     }
