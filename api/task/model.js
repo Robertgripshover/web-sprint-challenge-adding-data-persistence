@@ -3,13 +3,41 @@
 const db = require('../../data/dbConfig')
 
 
-const getAllTasks = () => {
-    return db('tasks')
+
+
+
+
+
+
+
+function getAllTasks() {
+
+    return db('tasks as t')
+    .leftJoin('projects as p', 't.task_id', 'p.project_id')
+    .select('t.*', 'p.project_description', 'p.project_name')
+
 } 
 
 
-const getTaskById = id => {
-    return db('tasks').where('task_id', id).first()
+
+
+
+
+
+
+
+// async function getAllTasks() {
+    
+//     const tasksRows = await db('tasks as t')
+
+//     return tasksRows
+// } 
+
+
+async function getTaskById(id) {
+
+    const currentTask = db('tasks').where('task_id', id).first()
+    return currentTask
 }
 
 

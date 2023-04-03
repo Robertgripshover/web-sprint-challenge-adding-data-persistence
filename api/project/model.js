@@ -15,6 +15,7 @@ async function getAllProjects() {
 async function getProjectById(id) {
 
     const currentProject = db('projects').where('project_id', id).first()
+
     return currentProject
 }
 
