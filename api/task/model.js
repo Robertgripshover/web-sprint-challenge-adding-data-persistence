@@ -26,21 +26,6 @@ function getAllTasks() {
 } 
 
 
-
-
-
-
-
-
-
-// async function getAllTasks() {
-    
-//     const tasksRows = await db('tasks as t')
-
-//     return tasksRows
-// } 
-
-
 async function getTaskById(id) {
 
     const currentTask = db('tasks').where('task_id', id).first()

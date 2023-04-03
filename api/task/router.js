@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
         const tasks = await TaskModel.getAllTasks()
 
         tasks.forEach(task => {
-            task.task_completed = Boolean(task.task_completed)
+            task.task_completed =!!task.task_completed
         })
 
         res.json(tasks)
@@ -23,7 +23,7 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         const newTask = await TaskModel.createNewTask(req.body)
-        newTask.task_completed = Boolean(newTask.task_completed)
+        newTask.task_completed = !!newTask.task_completed
         res.status(201).json(newTask)
     } catch (err) {
         next({ message: 'task post did not work' })

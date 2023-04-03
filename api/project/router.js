@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
         const projects = await ProjectModel.getAllProjects()
 
         projects.forEach(project => {
-            project.project_completed = Boolean(project.project_completed)
+            project.project_completed = !!project.project_completed
         })
         res.json(projects)
 
@@ -23,7 +23,7 @@ router.post('/', async (req, res, next) => {
     try {
 
         const newProject = await ProjectModel.createNewProject(req.body)
-        newProject.project_completed = Boolean(newProject.task_completed)
+        newProject.project_completed = !!newProject.project_completed
 
         res.status(201).json(newProject)
 
