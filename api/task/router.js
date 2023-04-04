@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
         const tasks = await TaskModel.getAllTasks()
 
         tasks.forEach(task => {
-            task.task_completed =!!task.task_completed
+            task.task_completed = !!task.task_completed
         })
 
         res.json(tasks)
